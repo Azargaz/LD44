@@ -89,7 +89,7 @@ public class Controller2D : MonoBehaviour
             if (hit)
             {
                 //Platforms                
-                if (platforms == (platforms | (1 << hit.collider.gameObject.layer)) && jumpDown && Mathf.Abs(velocity.y) < 0.1f)
+                if (platforms == (platforms | (1 << hit.collider.gameObject.layer)) && jumpDown)// && Mathf.Abs(velocity.y) < 0.1f)
                     continue;                                                        
 
                 if (platforms == (platforms | (1 << hit.collider.gameObject.layer)) && directionY == 1)
@@ -107,9 +107,7 @@ public class Controller2D : MonoBehaviour
                 if (hit && directionY == -1)
                     fallDirection = 0;
                 else if (!hit && directionY == -1)
-                {
                     fallDirection = i == 0 ? -1 : 1;
-                }
             }            
         }
     }

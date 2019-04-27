@@ -31,5 +31,7 @@ public class Player : MovementController
         base.Update();
 
         weaponSprites.localScale = new Vector3(input.x == 0 ? weaponSprites.localScale.x : Mathf.Sign(input.x), 1, 1);
+
+        Physics2D.SyncTransforms();
     }
 }

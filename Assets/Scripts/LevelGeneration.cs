@@ -11,6 +11,7 @@ public class LevelGeneration : MonoBehaviour
 
     public int wallsSize = 4;
     public GameObject walls;
+    public GameObject background;
 
     void Start()
     {
@@ -21,23 +22,30 @@ public class LevelGeneration : MonoBehaviour
     {
         Vector2 spawnPos = new Vector2(0, 0);
         int roomsLeft = numberOfRooms;
+        int lastIndex = 0;
         while(roomsLeft > 0)
         {
             int randomIndex = Random.Range(0, rooms.Length);
+            while(randomIndex == lastIndex) randomIndex = Random.Range(0, rooms.Length);
+            
             Instantiate(rooms[randomIndex], spawnPos, Quaternion.identity, transform);
         
             spawnPos += new Vector2(8, 0);
             roomsLeft--;
+            lastIndex = randomIndex;
         }
 
-        for(int x = -wallsSize; x < numberOfRooms * roomsSize + wallsSize; x++)
+        for(int x = -roomsSize - wallsSize; x < numberOfRooms * roomsSize + roomsSize + wallsSize; x++)
         {
             for(int y = -wallsSize; y < wallsSize + roomsSize; y++)
             {
-                if(x >= 0 && x < numberOfRooms * roomsSize && y >= 0 && y < roomsSize)
+                spawnPos = new Vector2(x, y);
+                
+                Instantiate(background, spawnPos, Quaternion.identity, transform);
+
+                if(x >= -roomsSize && x < numberOfRooms * roomsSize + roomsSize && y >= 0 && y < roomsSize)
                     continue;
 
-                spawnPos = new Vector2(x, y);
                 Instantiate(walls, spawnPos, Quaternion.identity, transform);
             }
         }
