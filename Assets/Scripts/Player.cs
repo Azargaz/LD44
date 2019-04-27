@@ -24,10 +24,12 @@ public class Player : MonoBehaviour
     public bool canMove = true;
     
     Controller2D controller;
+    Animator anim;
 
     void Start()
     {
         controller = GetComponent<Controller2D>();
+        anim = GetComponent<Animator>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         }
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        anim.SetFloat("InputX", Mathf.Abs(input.x));
 
         if (input.y < 0)
             controller.jumpDown = true;
