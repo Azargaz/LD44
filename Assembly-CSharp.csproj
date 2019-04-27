@@ -53,22 +53,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasScreenSpaceScaler.cs" />
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\CanvasWorldScaler.cs" />
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\Internal\VectorSwizzleExtensions.cs" />
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\PixelPerfectCamera.cs" />
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\PixelSnap.cs" />
-     <Compile Include="Assets\PixelPerfectCamera\Scripts\Scroller.cs" />
+     <Compile Include="Assets\Scripts\ActiveItem.cs" />
      <Compile Include="Assets\Scripts\AttackController.cs" />
      <Compile Include="Assets\Scripts\Controller2D.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Hurtbox.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\ItemController.cs" />
      <Compile Include="Assets\Scripts\LevelGeneration.cs" />
      <Compile Include="Assets\Scripts\MovementController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\ReskinAnimations.cs" />
      <Compile Include="Assets\Scripts\RoomGeneration.cs" />
-     <None Include="Assets\PixelPerfectCamera\background_art_license.txt" />
-     <None Include="Assets\PixelPerfectCamera\README.txt" />
+     <Compile Include="Assets\Scripts\Shield.cs" />
+     <Compile Include="Assets\Scripts\Weapon.cs" />
  <Reference Include="Unity.2D.PixelPerfect.Editor">
  <HintPath>D:/Git/LD44/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
  </Reference>
