@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1892182319
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7e8ce1a61ec759940b5497b89fd40144, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 3718423149447219153}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55b0a0711e75dde4ea7e480326c8dcf0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -163,13 +163,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f71dab04aef5bf4dbf646aa310ad8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 2
+  maxJumpHeight: 4
+  minJumpHeight: 1
   timeToJumpApex: 0.35
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
-  findPlayerDelay: 0.5
-  attackRange: 2
   canMove: 1
+  findPlayerDelay: 0.1
+  attackRange: 2
 --- !u!114 &3718423149447219152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +209,7 @@ MonoBehaviour:
   targets:
     serializedVersion: 2
     m_Bits: 256
+  knockbackStrength: 10
   maxHealth: 4
   currentHealth: 0
   invincibilityTime: 0.5

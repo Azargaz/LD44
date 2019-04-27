@@ -3,46 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Controller2D))]
-public class Enemy : MonoBehaviour
+public class Enemy : MovementController
 {
-    [Header("Movement")]
-    public float jumpHeight = 4;
-    public float timeToJumpApex = .4f;
-    float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .1f;
-    public float moveSpeed = 6;
-
-    float gravity;
-    float jumpVelocity;
-    [HideInInspector]
-    public Vector3 velocity;
-    float velocityXSmoothing;
-
-    Vector2 input;
-    bool jump;
-
     public float findPlayerDelay = 0.5f;
     float findPlayerTime = 0;
 
     [Header("Attack")]
     public float attackRange = 2.0f;
 
-    [HideInInspector]
-    public bool canMove = true;
-
-    Controller2D controller;
     Transform player;
 
-    void Start()
+    override protected void Start()
     {
-        controller = GetComponent<Controller2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;   
+        
+        base.Start();
     }
 
-    void Update()
+    override protected void Update()
     {
         if(!canMove && player != null)
             return;
@@ -54,22 +32,7 @@ public class Enemy : MonoBehaviour
             findPlayerTime = 0;
         }
 
-        if (controller.collisions.above || controller.collisions.below)
-        {
-            velocity.y = 0;
-        }
-
-        if (jump && controller.collisions.below)
-        {
-            velocity.y = jumpVelocity;   
-            jump = false;         
-        }      
-
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        base.Update();
     }
 
     void FindPlayer()

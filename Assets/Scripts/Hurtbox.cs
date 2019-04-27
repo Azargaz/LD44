@@ -8,6 +8,8 @@ public class Hurtbox : MonoBehaviour
     public LayerMask targets;
     [HideInInspector]
     public int damage = 1;
+    [HideInInspector]
+    public int knockbackStrength;
     
     void OnTriggerStay2D(Collider2D other) 
     {
@@ -19,7 +21,7 @@ public class Hurtbox : MonoBehaviour
             AttackController target = other.GetComponent<AttackController>();
             if(target != null)
             {
-                target.TakeDamage(damage);
+                target.TakeDamage(damage, knockbackStrength, (int)Mathf.Sign(other.transform.position.x - transform.root.position.x));
             }
         }   
     }

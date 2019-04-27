@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Hurtbox.cs" />
      <Compile Include="Assets\Scripts\LevelGeneration.cs" />
+     <Compile Include="Assets\Scripts\MovementController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RoomGeneration.cs" />
      <None Include="Assets\PixelPerfectCamera\background_art_license.txt" />

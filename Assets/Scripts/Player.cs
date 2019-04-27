@@ -3,73 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Controller2D))]
-public class Player : MonoBehaviour
+public class Player : MovementController
 {
-    [Header("Movement")]
-    public float maxJumpHeight = 4;
-    public float minJumpHeight = 1;
-    public float timeToJumpApex = .4f;
-    float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .1f;
-    public float moveSpeed = 6;
+    Transform weaponSprites;
 
-    float gravity;
-    float maxJumpVelocity;
-    float minJumpVelocity;
-    [HideInInspector]
-    public Vector3 velocity;
-    float velocityXSmoothing;
-
-    [HideInInspector]
-    public bool canMove = true;
-    
-    Controller2D controller;
-    Animator anim;
-
-    void Start()
+    override protected void Start()
     {
-        controller = GetComponent<Controller2D>();
-        anim = GetComponent<Animator>();
+        weaponSprites = transform.Find("Sprites");
 
-        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        base.Start();
     }
 
-    void Update()
-    {
-        if (controller.collisions.above || controller.collisions.below)
-        {
-            velocity.y = 0;
-            controller.jumpDown = false;
-        }
+    override protected void Update()
+    {        
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        jumpDown = false;
+        jumpUp = false;
+        attack = false;
+        if(Input.GetButtonDown("Jump"))
+            jumpDown = true;        
+        if(Input.GetButtonUp("Jump"))
+            jumpUp = true;
+        if(Input.GetButtonDown("Fire1"))
+            attack = true;
 
-        anim.SetFloat("InputX", Mathf.Abs(input.x));
+        base.Update();
 
-        if (input.y < 0)
-            controller.jumpDown = true;
-
-        if (Input.GetButtonDown("Jump") && controller.collisions.below)
-        {
-            if (controller.collisions.below)
-            {
-                velocity.y = maxJumpVelocity;
-            }
-        }
-        if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > minJumpVelocity)
-            {
-                velocity.y = minJumpVelocity;
-            }
-        }        
-
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        weaponSprites.localScale = new Vector3(input.x == 0 ? weaponSprites.localScale.x : Mathf.Sign(input.x), 1, 1);
     }
 }
