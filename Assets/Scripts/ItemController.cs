@@ -5,7 +5,6 @@ using UnityEditor;
 
 public class ItemController : MonoBehaviour
 {
-    public Item[] itemList;
     public Weapon[] weaponList;
     public Shield[] shieldList;
 
@@ -21,9 +20,17 @@ public class ItemController : MonoBehaviour
 
     AttackController attackController;
 
+    public bool randomEquipment;
+
     void Start()
     {
         attackController = GetComponent<AttackController>();
+
+        if(randomEquipment)
+        {
+            equippedWeapon = weaponList[Random.Range(0, weaponList.Length)];
+            equippedShield = shieldList[Random.Range(0, shieldList.Length)];
+        }
     }
 
     void Update()

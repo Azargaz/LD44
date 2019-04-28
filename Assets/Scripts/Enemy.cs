@@ -12,11 +12,19 @@ public class Enemy : MovementController
     [Header("Attack")]
     public float attackRange = 2.0f;
     public float attackCooldown;
-    float attackTime;
+    float attackCD;
+
+    public float defendCooldown;
+    float defendCD;
+    public float defendDuration;
+    float defendTime;
+
+    public bool hasWeapons = false;
 
     Transform player;
 
     Transform hurtboxTransform;
+    public Transform sprites;
     public int facingDirection = 1;
 
     override protected void Start()
@@ -40,12 +48,31 @@ public class Enemy : MovementController
             findPlayerTime = 0;
         }
 
-        attackTime -= Time.deltaTime;
+        attackCD -= Time.deltaTime;
+        defendCD -= Time.deltaTime;
+        defendTime -= Time.deltaTime;
+
+        if(defendTime <= 0)
+            guard = false;
+        
+        if(guard)
+        {
+            input = Vector2.zero;
+            attackController.GuardUp();
+        }
+        else
+        {
+            attackController.GuardDown();
+        }
 
         base.Update();
 
-        if(attackController.hurtbox != null)
+        if(sprites != null)
+            sprites.localScale = new Vector3(facingDirection, 1, 1);
+        else if(attackController.hurtbox != null)
             hurtboxTransform.localScale = new Vector3(facingDirection, 1, 1);
+
+        sprite.flipX = facingDirection < 0;
     }
 
     void FindPlayer()
@@ -62,14 +89,20 @@ public class Enemy : MovementController
             return;
         }
 
-        if(Mathf.Abs(direction.x) < attackRange)
+        if(Mathf.Abs(direction.x) < attackRange + Random.Range(0, 0.25f) && !guard)
         {
             direction = Vector2.zero;
 
-            if(attackTime <= 0)
+            if(attackCD <= 0)
             {
                 attack = true;
-                attackTime = attackCooldown;
+                attackCD = attackCooldown + Random.Range(0, 0.5f);
+            }
+            else if(defendCD <= 0 && !anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+            {
+                guard = true;
+                defendTime = defendDuration + Random.Range(0, 0.5f);
+                defendCD = defendCooldown + Random.Range(0, 0.5f);
             }
         }
 

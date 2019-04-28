@@ -55,10 +55,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActiveItem.cs" />
      <Compile Include="Assets\Scripts\AttackController.cs" />
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Controller2D.cs" />
+     <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawnerController.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Hurtbox.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\ItemController.cs" />
@@ -67,11 +71,12 @@
      <Compile Include="Assets\Scripts\OnHoverText.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
+     <Compile Include="Assets\Scripts\ReloadScene.cs" />
      <Compile Include="Assets\Scripts\ReskinAnimations.cs" />
      <Compile Include="Assets\Scripts\RoomGeneration.cs" />
-     <Compile Include="Assets\Scripts\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\ShopController.cs" />
+     <Compile Include="Assets\Scripts\Spikes.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
  <Reference Include="Unity.2D.PixelPerfect.Editor">
  <HintPath>D:/Git/LD44/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>

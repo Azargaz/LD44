@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1361062391737029620}
   - component: {fileID: 1361062391737029621}
   - component: {fileID: 851143190475064172}
+  - component: {fileID: 2918822175580931314}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -125,10 +126,27 @@ MonoBehaviour:
     m_Bits: 768
   damage: 1
   knockbackStrength: 1
-  hurtboxSize: 0.5
-  defaultHurtboxSize: 0
+  hurtboxSize: {x: 0.5, y: 0.5}
+  defaultHurtboxSize: {x: 0.5, y: 0.5}
   defaultHurtboxOffset: {x: 0, y: 0}
   manualHurtboxSize: 1
+--- !u!114 &2918822175580931314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361062391737029618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98242160b3156b548b3df436330e47fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholds: 010000000300000005000000
+  sprites:
+  - {fileID: 21300010, guid: 11b68d8798910be49a496520413d4f1f, type: 3}
+  - {fileID: 21300012, guid: 11b68d8798910be49a496520413d4f1f, type: 3}
+  - {fileID: 21300014, guid: 11b68d8798910be49a496520413d4f1f, type: 3}
 --- !u!1 &5276848481232002703
 GameObject:
   m_ObjectHideFlags: 0

@@ -171,9 +171,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   canMove: 1
   findPlayerDelay: 0.1
-  aggroRange: 10
-  attackRange: 1.1
-  attackCooldown: 2
+  aggroRange: 6
+  attackRange: 1.2
+  attackCooldown: 1.75
   facingDirection: 1
 --- !u!114 &3718423149447219152
 MonoBehaviour:

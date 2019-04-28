@@ -6,10 +6,13 @@ using System.Collections.Generic;
 public class Player : MovementController
 {
     Transform weaponSprites;
+    ReskinAnimations reskin;
+    bool dead = false;
 
     override protected void Start()
     {
         weaponSprites = transform.Find("Sprites");
+        reskin = GetComponent<ReskinAnimations>();
 
         base.Start();
     }
@@ -25,6 +28,10 @@ public class Player : MovementController
             guard = false;
             base.Update();
             Physics2D.SyncTransforms();
+
+            if(Input.GetKeyDown(KeyCode.R) && dead)
+                Respawn();
+
             return;
         }
 
@@ -60,5 +67,26 @@ public class Player : MovementController
         weaponSprites.localScale = new Vector3(input.x == 0 ? weaponSprites.localScale.x : Mathf.Sign(input.x), 1, 1);
 
         Physics2D.SyncTransforms();
+    }
+
+    void Respawn()
+    {
+        GameManager.instance.Respawn();
+
+        if(GameManager.instance.deaths > 1) return;
+        
+        dead = false;
+        anim.SetTrigger("Respawn");
+        anim.ResetTrigger("Death");
+        attackController.currentHealth = attackController.maxHealth;
+        reskin.spriteSheetName = "skeleton";
+
+        transform.position = GameManager.instance.respawnPoint;
+    }
+
+    void AnimDeath()
+    {
+        dead = true;
+        GameManager.instance.GameOver();
     }
 }

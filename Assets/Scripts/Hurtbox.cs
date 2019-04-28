@@ -32,7 +32,7 @@ public class Hurtbox : MonoBehaviour
     
     void OnTriggerStay2D(Collider2D other) 
     {
-        if(other.transform.root == transform.root)
+        if(other.transform.parent == transform)
             return;
 
         if(targets == (targets | (1 << other.gameObject.layer)))
