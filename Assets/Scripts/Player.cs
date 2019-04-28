@@ -21,6 +21,8 @@ public class Player : MovementController
         jumpDown = false;
         jumpUp = false;
         attack = false;
+        guard = false;
+
         if(Input.GetButtonDown("Jump"))
             jumpDown = true;        
         if(Input.GetButtonUp("Jump"))
@@ -28,6 +30,19 @@ public class Player : MovementController
         if(Input.GetButtonDown("Fire1"))
             attack = true;
 
+        if(Input.GetButton("Fire2"))
+            guard = true;
+        if(Input.GetButtonUp("Fire2"))
+            guard = false;        
+
+        if(guard)
+            attackController.GuardUp();
+        else
+            attackController.GuardDown();
+
+        if(guard || anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+            input = Vector2.zero;
+        
         base.Update();
 
         weaponSprites.localScale = new Vector3(input.x == 0 ? weaponSprites.localScale.x : Mathf.Sign(input.x), 1, 1);

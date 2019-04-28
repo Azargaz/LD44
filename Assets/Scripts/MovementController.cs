@@ -23,6 +23,8 @@ public class MovementController : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
     
+    protected bool grounded;
+    
     protected Controller2D controller;
     protected AttackController attackController;
     protected Animator anim;
@@ -34,6 +36,7 @@ public class MovementController : MonoBehaviour
     protected bool jumpDown;
     protected bool jump;
     protected bool attack;
+    protected bool guard;
 
     protected virtual void Start()
     {
@@ -55,23 +58,27 @@ public class MovementController : MonoBehaviour
             controller.jumpDown = false;
         }
 
+        grounded = controller.collisions.below;
+
+        anim.SetBool("Grounded", grounded);
         anim.SetFloat("InputX", Mathf.Abs(input.x));
         sprite.flipX = input.x == 0 ? sprite.flipX : input.x < 0;
 
         if (input.y < 0)
             controller.jumpDown = true;
 
-        if (jump && controller.collisions.below)
+        if (jump && grounded)
         {
             velocity.y = maxJumpVelocity;  
             jump = false;          
         }
 
-        if (jumpDown && controller.collisions.below)
+        if (jumpDown && grounded)
         {
             velocity.y = maxJumpVelocity;    
             jumpDown = false;
         }
+        
         if (jumpUp)
         {
             if (velocity.y > minJumpVelocity)
@@ -81,10 +88,19 @@ public class MovementController : MonoBehaviour
             }
         }        
 
-        if(attack)
+        if((attack && grounded) || (attackController.jumpingAttack && attack))
         {
             attackController.PerformAttack();
             attack = false;
+        }
+
+        if(guard && grounded)
+        {
+            attackController.GuardUp();
+        }
+        else
+        {
+            attackController.GuardDown();
         }
 
         float targetVelocityX = input.x * moveSpeed;

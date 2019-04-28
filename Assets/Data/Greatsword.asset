@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7a79a66cd43a9a4fbc1a24c0edca3c3, type: 3}
-  m_Name: Axe
+  m_Name: Greatsword
   m_EditorClassIdentifier: 
-  objectName: Axe
+  objectName: Greatsword
   description: 
   price: 99
-  sprite: {fileID: 21300006, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
+  sprite: {fileID: 21300048, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   damage: 2
-  knockbackStrength: 8
-  hurtboxSize: 0.6
-  jumpingAttack: 1
+  knockbackStrength: 25
+  hurtboxSize: 1
   attackEffects:
-  - {fileID: 21300008, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
-  - {fileID: 21300010, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
+  - {fileID: 21300050, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
+  - {fileID: 21300052, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
