@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a79a66cd43a9a4fbc1a24c0edca3c3, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  shopOrder: 1
   objectName: Axe
-  description: 
+  description: Versatile weapon, allows for attacks mid-air. Short range and low damage.
   price: 99
   sprite: {fileID: 21300006, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
+  shopSprite: {fileID: 21300014, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   damage: 2
   knockbackStrength: 8
+  staminaCost: 10
   hurtboxSize: 0.6
   jumpingAttack: 1
   attackEffects:

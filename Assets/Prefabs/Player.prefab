@@ -80,6 +80,8 @@ MonoBehaviour:
   knockbackStrength: 0
   hurtboxSize: 0.5
   defaultHurtboxSize: 0.5
+  defaultHurtboxOffset: {x: 0, y: 0.5}
+  manualHurtboxSize: 0
 --- !u!212 &3511095751581600552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -310,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060153478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.499, z: 0}
+  m_LocalPosition: {x: 0, y: -0.501, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 782433188}
@@ -610,10 +612,19 @@ MonoBehaviour:
     m_Bits: 512
   knockbackStrength: 10
   hurtboxSize: 0.5
+  jumpingAttack: 0
+  staminaCost: 10
   defense: 0
   maxHealth: 6
   currentHealth: 0
+  maxStamina: 100
+  currentStamina: 0
+  staminaRegenInterval: 0.1
+  staminaRegenerated: 4
   invincibilityTime: 0.5
+  damageNumbersColor: {r: 1, g: 0, b: 0, a: 1}
+  damageNumbersObj: {fileID: 5758651503264867484, guid: c5f3f40da9415fd4c9bc4dcdaa0f1d8e,
+    type: 3}
   hurtbox: {fileID: 268166733}
 --- !u!114 &8850316254073007344
 MonoBehaviour:

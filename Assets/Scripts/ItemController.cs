@@ -36,10 +36,11 @@ public class ItemController : MonoBehaviour
 
         attackController.damage = equippedWeapon.damage;
         attackController.knockbackStrength = equippedWeapon.knockbackStrength;
-        attackController.hurtboxSize = equippedWeapon.hurtboxSize;
+        attackController.hurtboxSize = new Vector2(equippedWeapon.hurtboxSize, equippedWeapon.hurtboxSize);
         attackController.jumpingAttack = equippedWeapon.jumpingAttack;
         attackController.staminaCost = equippedWeapon.staminaCost;
 
         attackController.defense = equippedShield.defense;
+        attackController.defenseStaminaMultiplier = equippedShield.staminaPerDefensePoint;
     }
 }

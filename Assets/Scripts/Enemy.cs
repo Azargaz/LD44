@@ -16,11 +16,16 @@ public class Enemy : MovementController
 
     Transform player;
 
+    Transform hurtboxTransform;
+    public int facingDirection = 1;
+
     override protected void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
         base.Start();
+
+        hurtboxTransform = attackController.hurtbox.transform;
     }
 
     override protected void Update()
@@ -38,11 +43,18 @@ public class Enemy : MovementController
         attackTime -= Time.deltaTime;
 
         base.Update();
+
+        if(attackController.hurtbox != null)
+            hurtboxTransform.localScale = new Vector3(facingDirection, 1, 1);
     }
 
     void FindPlayer()
     {
+        if(player == null) return;
+
         Vector2 direction = player.position - transform.position;
+
+        facingDirection = direction.x > 0 ? 1 : -1;
 
         if(Mathf.Abs(direction.x) > aggroRange)
         {

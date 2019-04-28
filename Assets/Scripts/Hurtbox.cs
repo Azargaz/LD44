@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Hurtbox : MonoBehaviour
 {
-    [HideInInspector]
     public LayerMask targets;
-    [HideInInspector]
     public int damage = 1;
-    [HideInInspector]
     public int knockbackStrength;
     [HideInInspector]
-    public float hurtboxSize = 0.5f;
-    public float defaultHurtboxSize = 0.5f;
+    public Vector2 hurtboxSize = new Vector2(0.5f, 0.5f);
+    public Vector2 defaultHurtboxSize = new Vector2(0.5f, 0.5f);
     public Vector2 defaultHurtboxOffset = new Vector2(0, 0.5f);
+
+    public bool manualHurtboxSize = false;
 
     BoxCollider2D coll;
 
@@ -24,8 +23,11 @@ public class Hurtbox : MonoBehaviour
 
     void Update() 
     {
-        coll.size = new Vector2(hurtboxSize, hurtboxSize);
-        coll.offset = defaultHurtboxOffset + new Vector2(Mathf.Abs(defaultHurtboxSize - hurtboxSize) / 2.0f, Mathf.Abs(defaultHurtboxSize - hurtboxSize) / 2.0f);
+        if(!manualHurtboxSize)
+        {
+            coll.size = hurtboxSize;
+            coll.offset = defaultHurtboxOffset + new Vector2(Mathf.Abs(defaultHurtboxSize.x - hurtboxSize.x) / 2.0f, Mathf.Abs(defaultHurtboxSize.y - hurtboxSize.y) / 2.0f);
+        }
     }
     
     void OnTriggerStay2D(Collider2D other) 
@@ -38,7 +40,7 @@ public class Hurtbox : MonoBehaviour
             AttackController target = other.GetComponent<AttackController>();
             if(target != null)
             {
-                target.TakeDamage(damage, knockbackStrength, (int)Mathf.Sign(other.transform.position.x - transform.root.position.x));
+                target.TakeDamage(damage, knockbackStrength, (int)Mathf.Sign(other.transform.position.x - transform.parent.position.x));
             }
         }   
     }

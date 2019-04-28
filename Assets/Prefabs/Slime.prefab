@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3718423149447219152}
   - component: {fileID: 1169080686}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6641402165047201348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,7 +171,10 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   canMove: 1
   findPlayerDelay: 0.1
-  attackRange: 1.5
+  aggroRange: 10
+  attackRange: 1.1
+  attackCooldown: 2
+  facingDirection: 1
 --- !u!114 &3718423149447219152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,12 +209,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5f5a99bce4fd542ba31081dfe75b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   targets:
     serializedVersion: 2
     m_Bits: 256
-  knockbackStrength: 10
+  knockbackStrength: 7
+  hurtboxSize: {x: 1, y: 0.5}
+  jumpingAttack: 0
+  staminaCost: 10
+  defense: 0
   maxHealth: 4
   currentHealth: 0
+  maxStamina: 50
+  currentStamina: 0
+  staminaRegenInterval: 0.1
+  staminaRegenerated: 1
+  defenseStaminaMultiplier: 20
   invincibilityTime: 0.5
-  hurtbox: {fileID: 0}
+  damageNumbersColor: {r: 0, g: 1, b: 0.57780695, a: 1}
+  damageNumbersObj: {fileID: 5758651503264867484, guid: c5f3f40da9415fd4c9bc4dcdaa0f1d8e,
+    type: 3}
+  hurtbox: {fileID: 4515431390547827513}
+--- !u!1 &9105287661304031914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6641402165047201348}
+  - component: {fileID: 2185491056362740749}
+  - component: {fileID: 4515431390547827513}
+  m_Layer: 9
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6641402165047201348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105287661304031914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3718423149447219162}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2185491056362740749
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105287661304031914}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.8, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3}
+  m_EdgeRadius: 0
+--- !u!114 &4515431390547827513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105287661304031914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059801c3013b26d4eb58a28905d107d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+    serializedVersion: 2
+    m_Bits: 0
+  damage: 1
+  knockbackStrength: 0
+  hurtboxSize: {x: 0.5, y: 0.5}
+  defaultHurtboxSize: {x: 0, y: 0}
+  defaultHurtboxOffset: {x: 0, y: 0}
+  manualHurtboxSize: 1

@@ -16,6 +16,18 @@ public class Player : MovementController
 
     override protected void Update()
     {        
+        if(attackController.currentHealth <= 0)
+        {
+            input = Vector2.zero;                
+            jumpDown = false;
+            jumpUp = false;
+            attack = false;
+            guard = false;
+            base.Update();
+            Physics2D.SyncTransforms();
+            return;
+        }
+
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         jumpDown = false;

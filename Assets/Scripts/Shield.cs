@@ -6,4 +6,5 @@ using UnityEngine;
 public class Shield : Item
 {
     public int defense;
+    public int staminaPerDefensePoint = 20;
 }
