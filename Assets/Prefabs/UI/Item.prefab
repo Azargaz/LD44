@@ -206,8 +206,9 @@ GameObject:
   - component: {fileID: 3384839218286883648}
   - component: {fileID: 3384839218286883651}
   - component: {fileID: 3384839218286883661}
+  - component: {fileID: 8651737147207699295}
   m_Layer: 5
-  m_Name: Item (0)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,6 +275,20 @@ MonoBehaviour:
   shopItem: {fileID: 0}
   itemName: {fileID: 0}
   itemDescription: {fileID: 0}
+--- !u!114 &8651737147207699295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384839218286883649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e565a22e27404ad4cb528cbfbfad933b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  item: {fileID: 0}
 --- !u!1 &3384839218773112094
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +403,17 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3384839218773112088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8651737147207699295}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

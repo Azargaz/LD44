@@ -38,6 +38,8 @@ public class AttackController : MonoBehaviour
 
     Attack chosenAttack = new Attack() { name = "default", id = 1 };
 
+    public bool dead;
+
     Animator anim;
     SpriteRenderer spriteRenderer;
     Color spriteColor;
@@ -64,8 +66,9 @@ public class AttackController : MonoBehaviour
         else
             spriteRenderer.color = spriteColor;
 
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && !dead)
         {
+            dead = true;
             Death();
             return;
         }
@@ -80,6 +83,7 @@ public class AttackController : MonoBehaviour
 
         anim.SetBool("JumpingAttack", jumpingAttack);
 
+        if(!anim.GetBool("Defend"))
         staminaRegenDelay += Time.deltaTime;
         if(staminaRegenDelay > staminaRegenInterval)
         {
@@ -149,6 +153,8 @@ public class AttackController : MonoBehaviour
     void Death()
     {
         anim.SetTrigger("Death");        
+
+        if(gameObject.tag != "Player") GameManager.instance.kills++;
     }
 
     void AnimDestroy()

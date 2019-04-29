@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
     EnemySpawnerController enemySpawners;
 
     public int deaths = 0;
+    public int kills = 0;
+    public int health = 0;
 
-    void Awake()
+    void Start()
     {
         instance = this;
         enemySpawners = GetComponent<EnemySpawnerController>();
+
+        if(Options.instance.skipIntro) transitionAnim.SetTrigger("SkipIntro");
     }
 
     void FirstDeath()

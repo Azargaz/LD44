@@ -13,7 +13,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject walls;
     public GameObject background;
 
-    void Start()
+    void Awake()
     {
         Generate();
     }

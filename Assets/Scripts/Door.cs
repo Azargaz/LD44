@@ -20,6 +20,8 @@ public class Door : MonoBehaviour
 
     public bool blockOtherDoor;
 
+    public bool saveHealthAmount = false;
+
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -49,6 +51,8 @@ public class Door : MonoBehaviour
         }
         target.position = teleportDestination;
         busy = false;
+
+        if(saveHealthAmount) GameManager.instance.health = GameObject.FindGameObjectWithTag("Player").GetComponent<AttackController>().currentHealth;
     }
 
     void Open()

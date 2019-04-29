@@ -8,6 +8,7 @@ public class Enemy : MovementController
     public float findPlayerDelay = 0.5f;
     float findPlayerTime = 0;
     public float aggroRange = 10;
+    public float jumpRange = 1.0f;
 
     [Header("Attack")]
     public float attackRange = 2.0f;
@@ -83,13 +84,13 @@ public class Enemy : MovementController
 
         facingDirection = direction.x > 0 ? 1 : -1;
 
-        if(Mathf.Abs(direction.x) > aggroRange)
+        if(Vector2.Distance(player.position, transform.position) > aggroRange)
         {
             input = Vector2.zero; 
             return;
         }
 
-        if(Mathf.Abs(direction.x) < attackRange + Random.Range(0, 0.25f) && !guard)
+        if(Vector2.Distance(player.position, transform.position) < attackRange + Random.Range(0, 0.25f) && !guard)
         {
             direction = Vector2.zero;
 
@@ -105,10 +106,15 @@ public class Enemy : MovementController
                 defendCD = defendCooldown + Random.Range(0, 0.5f);
             }
         }
+        else if(Vector2.Distance(player.position, transform.position) > attackRange + 1.0f)
+        {
+            defendTime = 0;
+        }
 
-        input = new Vector2(direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0, 0);
+        input = new Vector2(direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0, direction.y > jumpRange ? 1 : direction.y < -jumpRange ? -1 : 0);
+        // if(Mathf.Abs(direction.x) > attackRange) input.y = 0;
 
-        if(controller.collisions.right || controller.collisions.left) input.y = 1;
+        if((controller.collisions.right && facingDirection == 1) || (controller.collisions.left && facingDirection == -1)) input.y = 1;
 
         if(input.y > 0)
             jump = true;

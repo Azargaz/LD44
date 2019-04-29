@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
+    [HideInInspector]
     public Weapon[] weapons;
+    [HideInInspector]
     public Shield[] shields;
 
     public Transform weaponContainer;
@@ -26,16 +28,24 @@ public class ShopController : MonoBehaviour
 
         foreach (Weapon weapon in weapons)
         {
+            if(!weapon.purchasable) continue;
+
             GameObject spawnedWeapon = Instantiate(shopItem, transform.position, Quaternion.identity, weaponContainer);
             spawnedWeapon.GetComponent<OnHoverText>().onHover = onHoverObj;
             spawnedWeapon.GetComponent<OnHoverText>().shopItem = weapon;
+            spawnedWeapon.GetComponent<ShopItem>().price = weapon.price;
+            spawnedWeapon.GetComponent<ShopItem>().item = weapon;
         }
 
         foreach (Shield shield in shields)
         {
+            if(!shield.purchasable) continue;
+            
             GameObject spawnedShield = Instantiate(shopItem, transform.position, Quaternion.identity, shieldContainer);
             spawnedShield.GetComponent<OnHoverText>().onHover = onHoverObj;
             spawnedShield.GetComponent<OnHoverText>().shopItem = shield;
+            spawnedShield.GetComponent<ShopItem>().price = shield.price;
+            spawnedShield.GetComponent<ShopItem>().item = shield;
         }
     }
 }

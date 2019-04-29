@@ -14,6 +14,8 @@ public class Item : ScriptableObject, IComparable
     public Sprite sprite;
     public Sprite shopSprite;
 
+    public bool purchasable = true;
+
     public int CompareTo(object obj)
     {
         if(obj == null) return 1;

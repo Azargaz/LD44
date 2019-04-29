@@ -35,7 +35,7 @@ public class RoomGeneration : MonoBehaviour
 
     public SpawnableTiles[] spawnableTiles;
 
-    void Start()
+    void Awake()
     {
         Generate();
     }

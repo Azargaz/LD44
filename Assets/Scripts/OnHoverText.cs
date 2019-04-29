@@ -12,6 +12,8 @@ public class OnHoverText : EventTrigger
     public Text itemName;
     public Text itemDescription;
 
+    public bool itemBought = false;
+
     void Start()
     {
         itemName = onHover.transform.Find("Name").GetComponent<Text>();
@@ -22,10 +24,10 @@ public class OnHoverText : EventTrigger
     public override void OnPointerEnter(PointerEventData data)
     {        
         itemName.text = shopItem.objectName;
-        itemDescription.text = shopItem.description + "\n"
-            + "Price: " + shopItem.price + "\n"
+        itemDescription.text = shopItem.description + "\n\n"
+            + (itemBought || shopItem.price == 0 ? "ALREADY BOUGHT" : "Price: " + shopItem.price + "\n")
             ;
-        onHover.transform.position = Input.mousePosition + new Vector3(0, onHover.GetComponent<RectTransform>().sizeDelta.y / 2, 0);
+        onHover.transform.position = Input.mousePosition + new Vector3(onHover.GetComponent<RectTransform>().sizeDelta.x / 2, 0, 0);
         onHover.SetActive(true);
     }
 

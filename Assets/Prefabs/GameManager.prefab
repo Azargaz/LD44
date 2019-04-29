@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1402636489505302179}
   - component: {fileID: 1402636489505302178}
   - component: {fileID: 5940163109526476606}
+  - component: {fileID: 199383145}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -46,8 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverAnim: {fileID: 0}
   transitionAnim: {fileID: 0}
-  respawnPoint: {x: -100, y: 1}
+  respawnPoint: {x: -99, y: 1}
   deaths: 0
+  kills: 0
+  health: 0
 --- !u!114 &5940163109526476606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +63,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33aad07f30fd6594c83e8ed416557f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &199383145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402636489505302176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ad39d7411b4224484c3f14748ee721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  moneyText: {fileID: 0}

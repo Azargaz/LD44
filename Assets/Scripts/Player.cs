@@ -79,9 +79,11 @@ public class Player : MovementController
         anim.SetTrigger("Respawn");
         anim.ResetTrigger("Death");
         attackController.currentHealth = attackController.maxHealth;
+        attackController.dead = false;
         reskin.spriteSheetName = "skeleton";
 
         transform.position = GameManager.instance.respawnPoint;
+        MoneyController.instance.AddMoneyAfterDeath();
     }
 
     void AnimDeath()

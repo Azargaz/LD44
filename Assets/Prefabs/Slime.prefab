@@ -164,16 +164,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f71dab04aef5bf4dbf646aa310ad8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpHeight: 4
-  minJumpHeight: 1
+  maxJumpHeight: 4.5
+  minJumpHeight: 3
   timeToJumpApex: 0.35
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
   canMove: 1
   findPlayerDelay: 0.1
   aggroRange: 6
+  jumpRange: 2
   attackRange: 1.2
   attackCooldown: 1.75
+  defendCooldown: 0
+  defendDuration: 0
+  hasWeapons: 0
+  sprites: {fileID: 0}
   facingDirection: 1
 --- !u!114 &3718423149447219152
 MonoBehaviour:
@@ -226,9 +231,10 @@ MonoBehaviour:
   staminaRegenerated: 1
   defenseStaminaMultiplier: 20
   invincibilityTime: 0.5
-  damageNumbersColor: {r: 0, g: 1, b: 0.57780695, a: 1}
+  damageNumbersColor: {r: 0, g: 0.9622642, b: 0.57398224, a: 1}
   damageNumbersObj: {fileID: 5758651503264867484, guid: c5f3f40da9415fd4c9bc4dcdaa0f1d8e,
     type: 3}
+  dead: 0
   hurtbox: {fileID: 4515431390547827513}
 --- !u!1 &9105287661304031914
 GameObject:
