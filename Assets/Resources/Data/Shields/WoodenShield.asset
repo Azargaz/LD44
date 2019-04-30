@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 0
   objectName: Wooden Shield
-  description: This is the most basic shield.
+  description: The most basic shield.
   price: 0
   sprite: {fileID: 21300012, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300022, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
   defense: 2
-  staminaPerDefensePoint: 50
+  staminaPerDefensePoint: 35

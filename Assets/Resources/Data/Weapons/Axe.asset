@@ -15,12 +15,12 @@ MonoBehaviour:
   shopOrder: 1
   objectName: Axe
   description: Short range and low damage. Allows for attacks mid-air.
-  price: 100
+  price: 500
   sprite: {fileID: 21300002, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300014, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
-  damage: 2
-  knockbackStrength: 8
+  damage: 3
+  knockbackStrength: 15
   staminaCost: 10
   hurtboxSize: {x: 0.5, y: 0.7}
   jumpingAttack: 1

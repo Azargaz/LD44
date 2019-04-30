@@ -39,7 +39,7 @@ public class Enemy : MovementController
 
     override protected void Update()
     {
-        if(!canMove && player != null)
+        if((!canMove && player != null))
             return;
 
         findPlayerTime += Time.deltaTime;
@@ -78,7 +78,13 @@ public class Enemy : MovementController
 
     void FindPlayer()
     {
-        if(player == null) return;
+        if(player == null || attackController.currentHealth <= 0)
+        {
+            input = Vector2.zero;
+            attack = false;
+            guard = false;
+            return;
+        }
 
         Vector2 direction = player.position - transform.position;
 

@@ -40,7 +40,7 @@ public class Hurtbox : MonoBehaviour
             AttackController target = other.GetComponent<AttackController>();
             if(target != null)
             {
-                target.TakeDamage(damage, knockbackStrength, (int)Mathf.Sign(other.transform.position.x - transform.parent.position.x));
+                target.TakeDamage(damage, knockbackStrength, (int)Mathf.Sign(other.transform.position.x - transform.parent.position.x), true);
             }
         }   
     }

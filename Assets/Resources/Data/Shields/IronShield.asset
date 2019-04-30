@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 1
   objectName: Iron Shield
-  description: 
-  price: 0
+  description: Small defense but better than wood.
+  price: 500
   sprite: {fileID: 21300060, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300024, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1

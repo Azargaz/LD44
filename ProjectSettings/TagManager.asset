@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - WallSpawn
+  - Boss
   layers:
   - Default
   - TransparentFX

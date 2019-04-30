@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 3
   objectName: Greatshield
-  description: Almost like a door, blocks a lot of damage.
-  price: 99
+  description: Block a lot of damage, and consumes small amounts of stamina.
+  price: 5000
   sprite: {fileID: 21300028, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300028, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1

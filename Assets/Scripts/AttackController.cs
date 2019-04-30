@@ -40,12 +40,16 @@ public class AttackController : MonoBehaviour
 
     public bool dead;
 
+    public AudioClip damageSound;
+    public AudioClip blockSound;
+
     Animator anim;
     SpriteRenderer spriteRenderer;
     Color spriteColor;
     public Hurtbox hurtbox;
 
     MovementController movController;
+    PlaySound soundPlayer;
 
     void Awake()
     {
@@ -53,6 +57,7 @@ public class AttackController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteColor = spriteRenderer.color;
         movController = GetComponent<MovementController>();
+        soundPlayer = GetComponent<PlaySound>();
         currentHealth = maxHealth;
         currentStamina = maxStamina;
     }
@@ -113,12 +118,12 @@ public class AttackController : MonoBehaviour
         anim.SetBool("Defend", false);
     }
 
-    public void TakeDamage(int dmg, int knockbackForce, int knockbackDirection)
+    public void TakeDamage(int dmg, int knockbackForce, int knockbackDirection, bool blockable)
     {
         if (invincibilityDuration > 0 || currentHealth <= 0)
             return;
 
-        if(anim.GetBool("Defend"))
+        if(anim.GetBool("Defend") && blockable)
         {            
             int dmgDefended = dmg > defense ? defense : dmg;
             int staminaDiff = currentStamina - (dmgDefended * defenseStaminaMultiplier);
@@ -140,6 +145,9 @@ public class AttackController : MonoBehaviour
             staminaRegenDelay = 0;
         }
 
+        if(dmg > 0) soundPlayer.Play(damageSound);
+        else soundPlayer.Play(blockSound);
+
         FloatingNumbers spawnedNumbers = Instantiate(damageNumbersObj.gameObject, transform.position, Quaternion.identity).GetComponent<FloatingNumbers>();
         spawnedNumbers.color = damageNumbersColor;
         spawnedNumbers.number = dmg;
@@ -152,8 +160,10 @@ public class AttackController : MonoBehaviour
 
     void Death()
     {
-        anim.SetTrigger("Death");        
-
+        anim.SetBool("Death", true);        
+        anim.SetBool("Defend", false);
+        anim.ResetTrigger("Attack1");
+        
         if(gameObject.tag != "Player") GameManager.instance.kills++;
     }
 

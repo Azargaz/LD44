@@ -83,7 +83,6 @@ public class Player : MovementController
         reskin.spriteSheetName = "skeleton";
 
         transform.position = GameManager.instance.respawnPoint;
-        MoneyController.instance.AddMoneyAfterDeath();
     }
 
     void AnimDeath()

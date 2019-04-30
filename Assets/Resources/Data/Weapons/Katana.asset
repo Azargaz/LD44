@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 2
   objectName: Katana
-  description: Folded over 1000 times. Great damage and range, low knockback and stamina
-    cost. Allows for attacks mid-air.
-  price: 99
+  description: Great damage and range, low knockback and stamina cost. Allows for
+    attacks mid-air. Folded over 1000 times
+  price: 1000
   sprite: {fileID: 21300004, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300016, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
   damage: 3
-  knockbackStrength: 5
+  knockbackStrength: 12
   staminaCost: 15
   hurtboxSize: {x: 0.7, y: 0.5}
   jumpingAttack: 1

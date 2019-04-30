@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 4
   objectName: Longsword
-  description: Stable sword of knights. Good range, damage and knockback.
-  price: 99
+  description: Good range, damage and knockback. Legends says it was pulled out of
+    stone by a young girl.
+  price: 5000
   sprite: {fileID: 21300008, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300020, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
-  damage: 4
+  damage: 5
   knockbackStrength: 20
   staminaCost: 25
   hurtboxSize: {x: 0.75, y: 0.75}

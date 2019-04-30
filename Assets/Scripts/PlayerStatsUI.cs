@@ -9,6 +9,10 @@ public class PlayerStatsUI : MonoBehaviour
     public Transform heartsContainer;
     public GameObject hearthObj;
 
+    public Text killCounter;
+    float displayKills;
+    public Text heartMultiplier;
+    float displayHeartMultiplier;
     List<Image> hearts;
 
     AttackController playerStats;
@@ -43,5 +47,10 @@ public class PlayerStatsUI : MonoBehaviour
                 hearts[i/2].fillAmount = 0.5f;
             }
         }
+
+        displayKills = Mathf.Lerp(displayKills, GameManager.instance.kills, 10.0f * Time.deltaTime);
+        killCounter.text = "Kills: " + Mathf.RoundToInt(displayKills).ToString();
+        displayHeartMultiplier = Mathf.Lerp(displayHeartMultiplier, GameManager.instance.health + 1, 10.0f * Time.deltaTime);
+        heartMultiplier.text = "Heart multiplier: x" + Mathf.RoundToInt(displayHeartMultiplier).ToString();
     }
 }

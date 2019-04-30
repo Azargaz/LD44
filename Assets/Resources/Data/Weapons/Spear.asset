@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a79a66cd43a9a4fbc1a24c0edca3c3, type: 3}
   m_Name: Spear
   m_EditorClassIdentifier: 
-  shopOrder: 4
+  shopOrder: 3
   objectName: Spear
-  description: 
-  price: 0
+  description: Long reach and good damage with strong knockback.
+  price: 4000
   sprite: {fileID: 21300010, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300036, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
   damage: 3
-  knockbackStrength: 33
-  staminaCost: 15
-  hurtboxSize: {x: 0.95, y: 0.5}
+  knockbackStrength: 30
+  staminaCost: 20
+  hurtboxSize: {x: 0.9, y: 0.5}
   jumpingAttack: 0
   attackEffects:
   - {fileID: 21300020, guid: 370d86aa12b2aee44acfdae7414aef97, type: 3}

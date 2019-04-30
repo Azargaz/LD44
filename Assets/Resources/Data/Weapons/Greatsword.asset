@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopOrder: 3
   objectName: Greatsword
-  description: It was too big to be called sword. Great damage and strong knockback.
-    Heavy to use.
-  price: 99
+  description: Great damage and strong knockback. Consumes lot of stamina.
+  price: 2000
   sprite: {fileID: 21300006, guid: 15f7d75e473869d46b2d510e4a5e04a2, type: 3}
   shopSprite: {fileID: 21300018, guid: 36fc65f8d392c40439fce80539196e34, type: 3}
   purchasable: 1
-  damage: 3
+  damage: 4
   knockbackStrength: 30
   staminaCost: 35
   hurtboxSize: {x: 0.65, y: 0.75}

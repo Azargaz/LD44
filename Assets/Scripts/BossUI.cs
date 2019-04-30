@@ -12,7 +12,7 @@ public class BossUI : MonoBehaviour
 
     AttackController boss;
 
-    void Setup()
+    void Start()
     {
         boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<AttackController>();
         hearts = new List<Image>();
@@ -26,7 +26,11 @@ public class BossUI : MonoBehaviour
 
     void Update()
     {
-        if(boss == null) return;
+        if(boss == null) 
+        {
+            boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<AttackController>();
+            return;            
+        }
 
         for(int i = 0; i < boss.maxHealth; i++)
         {

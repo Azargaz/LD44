@@ -53,9 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ActivateBossUI.cs" />
      <Compile Include="Assets\Scripts\ActiveItem.cs" />
      <Compile Include="Assets\Scripts\AfterDeathEffects.cs" />
      <Compile Include="Assets\Scripts\AttackController.cs" />
+     <Compile Include="Assets\Scripts\BossDeath.cs" />
      <Compile Include="Assets\Scripts\BossUI.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Controller2D.cs" />
@@ -76,15 +78,18 @@
      <Compile Include="Assets\Scripts\Options.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
+     <Compile Include="Assets\Scripts\PlaySound.cs" />
      <Compile Include="Assets\Scripts\RandomTileSprite.cs" />
      <Compile Include="Assets\Scripts\ReloadScene.cs" />
      <Compile Include="Assets\Scripts\ReskinAnimations.cs" />
      <Compile Include="Assets\Scripts\RoomGeneration.cs" />
+     <Compile Include="Assets\Scripts\SaveStation.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\ShopController.cs" />
      <Compile Include="Assets\Scripts\ShopItem.cs" />
      <Compile Include="Assets\Scripts\Shopkeeper.cs" />
      <Compile Include="Assets\Scripts\Spikes.cs" />
+     <Compile Include="Assets\Scripts\TipBoard.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
  <Reference Include="Unity.2D.PixelPerfect.Editor">
  <HintPath>D:/Git/LD44/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>

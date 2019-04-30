@@ -22,12 +22,13 @@ public class MoneyController : MonoBehaviour
         moneyText.text = Mathf.RoundToInt(displayMoney).ToString();
     }
 
-    public void AddMoneyAfterDeath()
+    public void ConvertKillsToMoney()
     {
         int health = GameManager.instance.health;
         int kills = GameManager.instance.kills;
+        GameManager.instance.kills = 0;
 
-        int amount = (health / 2 + 1) * kills * 100;
+        int amount = (health + 1) * (kills + 1) * 100;
         AddAmount(amount);
     }
 
